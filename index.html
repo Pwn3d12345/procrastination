@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<!--Nick Chen made this thing on 2/5/2018-->
+<html>
+	<head>
+		<title>
+		
+		</title>
+		<script>
+			function initialize() {
+				if (localStorage.points<0){
+					pointsValue = localStorage.points;
+				} else {
+					pointsValue = 0;
+					upgradeValue = 0;					
+				}
+				points = document.getElementById("points");
+				setInterval(run, 1000);
+			}
+			
+			function add() {
+				pointsValue++;
+				display();
+			}
+			
+			function run(){
+				pointsValue+= upgradeValue;
+				display();
+			}
+			
+			function display() {
+				points.innerHTML = pointsValue;
+			}
+		</script>
+		<style>
+		
+		</style>
+	</head>
+	<body onload="initialize();">
+		<h1>Title</h1>
+		<p>
+			Points: <span id="points">0</span>
+			<br>
+			<button id="click" onclick="add();">Do Nothing</button>
+		</p>
+		
+	</body>
+</html>
