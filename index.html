@@ -7,14 +7,16 @@
 		</title>
 		<script>
 			function initialize() {
-				if (localStorage.points<0){
-					pointsValue = localStorage.points;
+				if (parseInt(localStorage.points)>0){
+					pointsValue = parseInt(localStorage.points);
+					upgradeValue = 0;
 				} else {
 					pointsValue = 0;
 					upgradeValue = 0;					
 				}
+				display();
 				points = document.getElementById("points");
-				setInterval(run, 1000);
+				timer = setInterval(run, 1000);
 			}
 			
 			function add() {
@@ -30,6 +32,10 @@
 			function display() {
 				points.innerHTML = pointsValue;
 			}
+			
+			function save(){
+				localStorage.points = pointsValue;
+			}
 		</script>
 		<style>
 		
@@ -38,9 +44,10 @@
 	<body onload="initialize();">
 		<h1>Title</h1>
 		<p>
-			Points: <span id="points">0</span>
+			Points: <span id="points"></span>
 			<br>
-			<button id="click" onclick="add();">Do Nothing</button>
+			<button id="click" onclick="add();">+</button>
+			<button id="save" onclick="save();">Save</button>
 		</p>
 		
 	</body>
